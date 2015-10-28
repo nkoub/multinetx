@@ -117,7 +117,7 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_15_0.png)
+![png](img/edge_colored.png)
 
 
 ### Regular interconnected multiplex
@@ -165,7 +165,7 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_21_0.png)
+![png](img/regular_multiplex.png)
 
 
 ### General multiplex multiplex 
@@ -213,4 +213,4 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_26_0.png)
+![png](img/general_multiplex.png)
