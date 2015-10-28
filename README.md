@@ -10,7 +10,7 @@ This allows for:
 - Analysing the spectral properties of adjacency or Laplacian matrices 
 - Visualizing dynamical processes by coloring the nodes and links accordingly 
 
-multiNetX is part of the deliverables of the LASAGNE project (multi-LAyer SpAtiotemporal Generalized NEtworks), EU/FP7-2012-STREP-318132
+multiNetX is part of the deliverables of the LASAGNE project (multi-LAyer SpAtiotemporal Generalized NEtworks), EU/FP7-2012-STREP-318132 (http://complex.ffn.ub.es/~lasagne/)
 
 
 
@@ -79,7 +79,8 @@ Then you just add that directory to your PYTHONPATH
 
 
 
-##### Plot different multiplex networks
+
+### Plot different multiplex networks
      
 ##### Import standard libraries
 
@@ -87,18 +88,13 @@ Then you just add that directory to your PYTHONPATH
     import numpy as np
     from scipy.sparse import lil_matrix
 
-
     import matplotlib.pyplot as plt
     %matplotlib inline
 
-##### Import the package NetworkX for single layer networks
+##### Import the package NetworkX and MultiNetX
 
 
     import networkx as nx
-
-##### Import the package MultiNetX
-
-
     import multinetx as mx
 
 ##### Create three Erd"os- R'enyi networks with N nodes for each layer
