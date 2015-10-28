@@ -6,7 +6,7 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
 This allows for:
 
 
-- Creating undirected networks with weighted or unweighted links
+- Creating networks with weighted or unweighted links (only undirected networks are supported in this version)
 - Analysing the spectral properties of (symmetric) adjacency or Laplacian matrices 
 - Visualizing dynamical processes by coloring the nodes and links accordingly 
 
