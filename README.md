@@ -97,6 +97,8 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
 
+##### Plot the adjacency matrix and the multiplex networks
+
 
     fig = plt.figure(figsize=(15,5))
     ax1 = fig.add_subplot(121)
@@ -135,15 +137,16 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
 ##### Create an instance of the MultilayerGraph class
 
 
-    mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3], inter_adjacency_matrix=adj_block)
+    mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3], 
+                            inter_adjacency_matrix=adj_block)
     
     mg.set_edges_weights(inter_layer_edges_weight=4)
     
     mg.set_intra_edges_weights(layer=0,weight=1)
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
-    
 
+##### Plot the adjacency matrix and the multiplex networks
 
 
     fig = plt.figure(figsize=(15,5))
@@ -182,6 +185,8 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
     adj_block += adj_block.T
     adj_block[adj_block>1] = 1
 
+##### Create an instance of the MultilayerGraph class
+
 
     mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3,g1],
                             inter_adjacency_matrix=adj_block)
@@ -192,6 +197,8 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
     mg.set_intra_edges_weights(layer=3,weight=5)
+
+##### Plot the adjacency matrix and the multiplex networks
 
 
     fig = plt.figure(figsize=(15,5))
