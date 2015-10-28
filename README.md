@@ -1,4 +1,4 @@
-multiNetX v1.0
+multiNetX v1.0 ![png](logo.png)
 =========
 
 multiNetX is a python package for the manipulation and 
