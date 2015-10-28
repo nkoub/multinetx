@@ -81,7 +81,7 @@ How to use multiNetX
 
 
 
-### Plot different multiplex networks
+Plot multiplex networks
 =========
      
 ##### Import standard libraries
