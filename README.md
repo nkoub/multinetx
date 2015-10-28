@@ -1,7 +1,10 @@
 multiNetX v1.0
 =========
 
-multiNetX is a python package for the manipulation and study of multilayer networks. The core of this package is a MultilayerGraph, a class that inherits all properties from networkx.Graph(). 
+multiNetX is a python package for the manipulation and 
+study of multilayer networks. The core of this package 
+is a MultilayerGraph, a class that inherits all properties
+ from networkx.Graph(). 
 
 This allows for:
 
@@ -9,8 +12,6 @@ This allows for:
 - Creating networks with weighted or unweighted links (only undirected networks are supported in this version)
 - Analysing the spectral properties of adjacency or Laplacian matrices 
 - Visualizing dynamical processes by coloring the nodes and links accordingly 
-
-multiNetX is part of the deliverables of the LASAGNE project (multi-LAyer SpAtiotemporal Generalized NEtworks), EU/FP7-2012-STREP-318132 (http://complex.ffn.ub.es/~lasagne/)
 
 
 
@@ -336,6 +337,10 @@ Copyright
 (C) Copyright 2013-2015, Nikos E Kouvaris
 
 Each file in this folder is part of the multiNetX package.
+
+multiNetX is part of the deliverables of the LASAGNE project 
+(multi-LAyer SpAtiotemporal Generalized NEtworks),
+EU/FP7-2012-STREP-318132 (http://complex.ffn.ub.es/~lasagne/)
 
 multiNetX is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
