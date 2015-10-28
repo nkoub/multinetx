@@ -7,8 +7,11 @@ This allows for:
 
 
 - Creating networks with weighted or unweighted links (only undirected networks are supported in this version)
-- Analysing the spectral properties of (symmetric) adjacency or Laplacian matrices 
+- Analysing the spectral properties of adjacency or Laplacian matrices 
 - Visualizing dynamical processes by coloring the nodes and links accordingly 
+
+multiNetX is part of the deliverables of the LASAGNE project (multi-LAyer SpAtiotemporal Generalized NEtworks), EU/FP7-2012-STREP-318132
+
 
 
 ### How to install multiNetX
