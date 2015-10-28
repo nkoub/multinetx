@@ -3,7 +3,9 @@ multiNetX is a python package for the manipulation and study of multilayer netwo
 ### How to install multiNetX
 
 
-	multinetx does not need intallation. You simply download the source files and save them into your file system. Then you just add that directory to your PYTHONPATH
+multinetx does not need intallation. 
+You simply download the source files and save them into your file system. 
+Then you just add that directory to your PYTHONPATH
 	
 	export PYTHONPATH=path_to_your_python_libraries/multinetx:$PYTHONPATH
 
