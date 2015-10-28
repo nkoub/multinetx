@@ -1,4 +1,15 @@
-multiNetX is a python package for the manipulation and study of multilayer networks. It is based on NetworkX (http://networkx.github.io/)
+multiNetX v1.0
+=========
+
+multiNetX is a python package for the manipulation and study of multilayer networks.
+The core of this package is a MultilayerGraph which inherits all properties of networkx.Graph().
+This allows for:
+
+
+- Creating undirected networks with weighted or unweighted links
+- Analysing the spectral properties of (symmetric) adjacency or Laplacian matrices 
+- Visualizing dynamical processes by coloring the nodes and links accordingly 
+
 
 ### How to install multiNetX
 
@@ -65,7 +76,7 @@ Then you just add that directory to your PYTHONPATH
 
 
 
-### Plot different multiplex networks
+##### Plot different multiplex networks
      
 ##### Import standard libraries
 
