@@ -118,6 +118,17 @@ How to plot multiplex networks
 
     MG = mx.MultilayerGraph(list_of_layers=[g1,g2,g3])
 
+
+##### Create the multiplex network with in a different way
+
+
+    MG = mx.MultilayerGraph()	# empty graph    
+    MG.add_layer(g1)
+    MG.add_layer(g2)
+    MG.add_layer(g3) 
+    MG.layers_interconnect() 	# zero inter-adjacency matrix
+
+
 ##### Set weights to the edges
 
 

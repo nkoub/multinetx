@@ -143,24 +143,33 @@ class MultilayerGraph(Graph):
         except multinetxError:
             raise multinetxError("Multiplex cannot inherit Graph properly")
 
+
         ## Check if all graphs have the same number of nodes
         for lg in self.list_of_layers:
             try:
                 assert(lg.number_of_nodes() == self.num_nodes_in_layers)
             except AssertionError:
                 raise multinetxError("Graph at layer does not have the same number of nodes")  
-    #:~  
-    def layers_interconnect(self, inter_adjacency_matrix):
+    #:<~  
+    def layers_interconnect(self, inter_adjacency_matrix=None):
         """Parameters:
         -----------
         Examples:
         ---------
         """
+        ## Make a zero lil matrix for inter_adjacency_matrix
+        if inter_adjacency_matrix is None:
+           inter_adjacency_matrix = \
+                       lil_matrix(zeros(
+                       (self.num_nodes_in_layers*self.num_layers,
+                       self.num_nodes_in_layers*self.num_layers)))
+        
+        ## Check if the matrix inter_adjacency_matrix is lil
         try:
             assert(inter_adjacency_matrix.format == "lil")
         except AssertionError:    
-            raise multinetxError("inter_adjacency_matrix "\
-                                 "is not scipy.sparse.lil")
+            raise multinetxError("interconnecting_adjacency_matrix "\
+                                 "is not scipy.sparse.lil") 
         for i,row in enumerate(inter_adjacency_matrix.rows):
             for pos,j in enumerate(row):
                 if i>j:

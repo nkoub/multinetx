@@ -51,5 +51,17 @@ Create a multiplex network with multiNetX
                             inter_adjacency_matrix=adj_block)
 
 
+##### A different approach
+
+
+    MG = mx.MultilayerGraph()
+    
+    MG.add_layer(g1)
+    MG.add_layer(g2)
+    MG.add_layer(g3)
+    
+    MG.layers_interconnect(inter_adjacency_matrix=adj_block)
+          
+                            
 The object MG inherits all properties from Graph of networkx, so that
 we can calculate adjacency or Laplacian matrices, their eigenvalues, etc.
