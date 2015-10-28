@@ -105,7 +105,7 @@ Then you just add that directory to your PYTHONPATH
     g2 = nx.erdos_renyi_graph(N,0.07,seed=211)
     g3 = nx.erdos_renyi_graph(N,0.07,seed=208)
 
-### Edge colored nertwork (no inter-connected layers)
+#### Edge colored nertwork (no inter-connected layers)
 
 ##### Create the multiplex network
 
@@ -144,7 +144,7 @@ Then you just add that directory to your PYTHONPATH
 ![png](img/edge_colored.png)
 
 
-### Regular interconnected multiplex
+#### Regular interconnected multiplex
 
 ##### Define the type of interconnection between the layers
 
@@ -193,7 +193,7 @@ Then you just add that directory to your PYTHONPATH
 ![png](img/regular_multiplex.png)
 
 
-### General multiplex multiplex 
+#### General multiplex multiplex 
 
 ##### Define the type of interconnection between the layers
 
