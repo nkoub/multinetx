@@ -25,7 +25,7 @@ Then you just add that directory to your PYTHONPATH
 
 
 
-### How to use multiNetX
+How to use multiNetX
 =========
 
 ##### Import standard libraries for numerics and plots
@@ -247,7 +247,7 @@ Then you just add that directory to your PYTHONPATH
 ![png](img/general_multiplex.png)
 
 
-### Copyright
+Copyright
 =========
 
 (C) Copyright 2013-2015, Nikos E Kouvaris
