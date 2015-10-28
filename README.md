@@ -28,11 +28,10 @@ Then you just add that directory to your PYTHONPATH
 How to use multiNetX
 =========
 
-##### Import standard libraries for numerics and plots
+##### Import standard libraries for numerics
 
 
     import numpy as np
-    import matplotlib.pyplot as plt
 
 ##### Import lil_matrix to use sparse matrices
 
@@ -91,7 +90,6 @@ Plot multiplex networks
     from scipy.sparse import lil_matrix
 
     import matplotlib.pyplot as plt
-    %matplotlib inline
 
 ##### Import the package NetworkX and MultiNetX
 
