@@ -13,15 +13,12 @@
 
     import numpy as np
     from scipy.sparse import lil_matrix
+    import matplotlib.pylab as plt
 
-#### Import the package NetworkX for single layer networks
+#### Import the package NetworkX and multiNetX
 
 
     import networkx as nx
-
-#### Import the package MultiNetX
-
-
     import multinetx as mx
 
 #### Create two Erd"os- R'enyi networks with N nodes for each layer
@@ -40,7 +37,6 @@
 
 
     adj_block[:N,N:] = np.identity(N)    # L_12
-    adj_block[:N,N:] = np.identity(N)    # L_13
     adj_block += adj_block.T
 
 #### Create an instance of the MultilayerGraph class
@@ -67,10 +63,6 @@
         eigval_all[n] = nx.laplacian_spectrum(mg,weight="weight")
 
 #### Plot the eigenvalues as a function of inter-layer coupling
-
-
-    import matplotlib.pylab as plt
-    %matplotlib inline  # this is for ploting within
 
 
     fig = plt.figure()
