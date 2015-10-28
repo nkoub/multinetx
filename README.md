@@ -10,6 +10,9 @@ Then you just add that directory to your PYTHONPATH
 	export PYTHONPATH=path_to_your_python_libraries/multinetx:$PYTHONPATH
 
 
+### How to use multiNetX
+
+
 ##### Import standard libraries for numerics and plots
 
 
@@ -62,7 +65,7 @@ Then you just add that directory to your PYTHONPATH
 
 
 
-##### Plot different multiplex networks
+### Plot different multiplex networks
      
 ##### Import standard libraries
 
