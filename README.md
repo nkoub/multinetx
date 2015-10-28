@@ -119,7 +119,7 @@ How to plot multiplex networks
     MG = mx.MultilayerGraph(list_of_layers=[g1,g2,g3])
 
 
-##### Create the multiplex network with in a different way
+##### Create the multiplex network with a different way
 
 
     MG = mx.MultilayerGraph()	# empty graph    
