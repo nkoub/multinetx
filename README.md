@@ -14,7 +14,7 @@ multiNetX is part of the deliverables of the LASAGNE project (multi-LAyer SpAtio
 
 
 
-### How to install multiNetX
+How to install multiNetX
 =========
 
 multinetx does not need intallation. 
