@@ -15,7 +15,7 @@ multiNetX is part of the deliverables of the LASAGNE project (multi-LAyer SpAtio
 
 
 ### How to install multiNetX
-
+=========
 
 multinetx does not need intallation. 
 You simply download the source files and save them into your file system. 
@@ -24,8 +24,9 @@ Then you just add that directory to your PYTHONPATH
 	export PYTHONPATH=path_to_your_python_libraries/multinetx:$PYTHONPATH
 
 
-### How to use multiNetX
 
+### How to use multiNetX
+=========
 
 ##### Import standard libraries for numerics and plots
 
@@ -81,6 +82,7 @@ Then you just add that directory to your PYTHONPATH
 
 
 ### Plot different multiplex networks
+=========
      
 ##### Import standard libraries
 
@@ -243,3 +245,30 @@ Then you just add that directory to your PYTHONPATH
 
 
 ![png](img/general_multiplex.png)
+
+
+### Copyright
+=========
+
+(C) Copyright 2013-2015, Nikos E Kouvaris
+
+This code has no warranty whatsoever and any kind of support is provided. 
+You are free to do what you like with this code as long as you leave this 
+copyright in place.
+
+(C) Copyright 2013-2015, Nikos E Kouvaris
+
+Each file in this folder is part of the multiNetX package.
+
+multiNetX is free software: you can redistribute it and/or modify it 
+under the terms of the GNU General Public License as published by the 
+Free Software Foundation, either version 3 of the License, 
+or (at your option) any later version.
+
+multiNetX is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License 
+along with the package. If not, see http://www.gnu.org/licenses/. 
