@@ -8,7 +8,7 @@
 #    LICENCE ???
 ######################################################################## 
                 
-#### Import standard libraries
+##### Import standard libraries
 
 
     import numpy as np
@@ -18,17 +18,17 @@
     import matplotlib.pyplot as plt
     %matplotlib inline
 
-#### Import the package NetworkX for single layer networks
+##### Import the package NetworkX for single layer networks
 
 
     import networkx as nx
 
-#### Import the package MultiNetX
+##### Import the package MultiNetX
 
 
     import multinetx as mx
 
-#### Create three Erd"os- R'enyi networks with N nodes for each layer
+##### Create three Erd"os- R'enyi networks with N nodes for each layer
 
 
     N = 50
@@ -36,15 +36,21 @@
     g2 = nx.erdos_renyi_graph(N,0.07,seed=211)
     g3 = nx.erdos_renyi_graph(N,0.07,seed=208)
 
-## Edge colored nertwork (no inter-connected layers)
+### Edge colored nertwork (no inter-connected layers)
 
-#### Create the graph and add weights to the edges
+##### Create the multiplex network
 
 
     mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3])
+
+##### Set weights to the edges
+
+
     mg.set_intra_edges_weights(layer=0,weight=1)
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
+
+##### Plot the adjacency matrix and the multiplex networks
 
 
     fig = plt.figure(figsize=(15,5))
@@ -66,12 +72,12 @@
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_13_0.png)
+![png](plot_multiplex_networks_files/plot_multiplex_networks_16_0.png)
 
 
-## Regular interconnected multiplex
+### Regular interconnected multiplex
 
-#### Define the type of interconnection between the layers
+##### Define the type of interconnection between the layers
 
 
     adj_block = lil_matrix(np.zeros((N*3,N*3)))
@@ -81,15 +87,19 @@
     #adj_block[N:2*N,2*N:3*N] = np.identity(N)    # L_23
     adj_block += adj_block.T
 
-#### Create an instance of the MultilayerGraph class
+##### Create an instance of the MultilayerGraph class
 
 
-    mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3],inter_adjacency_matrix=adj_block)
+    mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3], 
+                            inter_adjacency_matrix=adj_block)
     
     mg.set_edges_weights(inter_layer_edges_weight=4)
+    
     mg.set_intra_edges_weights(layer=0,weight=1)
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
+
+##### Plot the adjacency matrix and the multiplex networks
 
 
     fig = plt.figure(figsize=(15,5))
@@ -111,12 +121,12 @@
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_19_0.png)
+![png](plot_multiplex_networks_files/plot_multiplex_networks_23_0.png)
 
 
-## General multiplex multiplex 
+### General multiplex multiplex 
 
-#### Define the type of interconnection between the layers
+##### Define the type of interconnection between the layers
 
 
     adj_block = lil_matrix(np.zeros((N*4,N*4)))
@@ -128,14 +138,20 @@
     adj_block += adj_block.T
     adj_block[adj_block>1] = 1
 
+##### Create an instance of the MultilayerGraph class
 
-    mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3,g1],inter_adjacency_matrix=adj_block)
+
+    mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3,g1],
+                            inter_adjacency_matrix=adj_block)
     
     mg.set_edges_weights(inter_layer_edges_weight=4)
+    
     mg.set_intra_edges_weights(layer=0,weight=1)
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
-    mg.set_intra_edges_weights(layer=3,weight=2)
+    mg.set_intra_edges_weights(layer=3,weight=5)
+
+##### Plot the adjacency matrix and the multiplex networks
 
 
     fig = plt.figure(figsize=(15,5))
@@ -149,15 +165,15 @@
     ax2.set_title('general multiplex network')
     pos = mx.get_position(mg,nx.fruchterman_reingold_layout(mg.get_layer(0)),
                           layer_vertical_shift=.6,
-                          layer_horizontal_shift=1.3,
-                          proj_angle=.8)
+                          layer_horizontal_shift=0.9,
+                          proj_angle=.6)
     nx.draw_networkx(mg,pos=pos,ax=ax2,node_size=50,with_labels=False,
                      edge_color=[mg[a][b]['weight'] for a,b in mg.edges()],
-                     edge_cmap=plt.cm.jet_r)
+                     edge_cmap=plt.cm.jet)
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_24_0.png)
+![png](plot_multiplex_networks_files/plot_multiplex_networks_30_0.png)
 
 
 

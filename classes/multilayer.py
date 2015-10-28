@@ -148,7 +148,7 @@ class MultilayerGraph(Graph):
             try:
                 assert(lg.number_of_nodes() == self.num_nodes_in_layers)
             except AssertionError:
-                raise multinetxError("Graph at layer does not have")  
+                raise multinetxError("Graph at layer does not have the same number of nodes")  
     #:~  
     def layers_interconnect(self, inter_adjacency_matrix):
         """Parameters:
