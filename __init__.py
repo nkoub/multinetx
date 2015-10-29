@@ -52,13 +52,19 @@ import multinetx.classes
 #
 from multinetx.draw import *
 import  multinetx.draw
-#
-# from multinetx.linear_algebra import *
-# import multinetx.linear_algebra
-#
-#
-#
+
 from multinetx.utilities import *
 import multinetx.utilities
+
+try:
+	from networkx import *
+except ImportError:
+    raise ImportError("NetworkX is required")
+    
+try:
+    from scipy.sparse import lil_matrix as lil_matrix
+except ImportError:
+    raise ImportError("SciPy is required")
+
 
 

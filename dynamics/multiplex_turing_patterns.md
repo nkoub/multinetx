@@ -1,15 +1,13 @@
-Activator-Inhibitor systems in multiplex networks
-=========
 
-                
 #### Import libraries
 
 
     import numpy as np
-    from scipy.integrate import ode
     import matplotlib.pylab as plt
-    import networkx as nx
+    
     import multinetx as mx
+    
+    from scipy.integrate import ode
 
 #### The Mimura-Murray ecological model
 
@@ -45,22 +43,20 @@ Activator-Inhibitor systems in multiplex networks
             sol.append(solver.y)
         return np.array(sol)
 
-#### Total integration time and time step
-
-
-    N = 350
-    g1 = nx.barabasi_albert_graph(n=N, m=5, seed=812)   # activators
-    g2 = nx.barabasi_albert_graph(n=N, m=200, seed=812) # inhibitors
-
 #### Create the activator-inhibitor multiplex
 
 
-    G = mx.MultilayerGraph(list_of_layers=[g1,g2])
+    G = mx.MultilayerGraph()
+
+
+    N = 350
+    G.add_layer(mx.barabasi_albert_graph(n=N, m=5,   seed=812))   # activators
+    G.add_layer(mx.barabasi_albert_graph(n=N, m=200, seed=812))   # inhibitors
 
 #### Laplacian matrices of the multiplex
 
 
-    G.lapl = (-1.0) * nx.laplacian_matrix(G,weight=None)
+    G.lapl = (-1.0) * mx.laplacian_matrix(G,weight=None)
 
 #### Right-hand-side of the Mimura-Murray model
 
@@ -76,10 +72,10 @@ Activator-Inhibitor systems in multiplex networks
     G.d = 0.4
 
 
-    G.N = G.number_of_nodes_in_layer() 
+    G.N = G.get_number_of_nodes_in_layer() 
     G.diff = [0.12, 0.12]  
 
-#### Initial conditions and and small perturbation
+#### Initial conditions and perturbation
 
 
     activators = np.empty(G.N,dtype=np.double)
@@ -92,12 +88,12 @@ Activator-Inhibitor systems in multiplex networks
 #### Integrate the system
 
 
-    sol = integrate(G,dt=0.5,tmax=200,method='dpori5')
+    sol = integrate(G,dt=0.5,tmax=200,method='dopri5')
 
 #### Sort the solution according to decreasing degree of the activator layer
 
 
-    deg_act = g1.degree().values()
+    deg_act = G.get_layer(0).degree().values()
     sdeg_act = np.argsort(deg_act)[::-1]
     sdeg_sol = np.append(sdeg_act,G.N+sdeg_act)
     ssol = sol[:,sdeg_sol]
@@ -111,6 +107,8 @@ Activator-Inhibitor systems in multiplex networks
                         cmap=plt.cm.YlOrBr)
         ax.set_xlim(-5,NN)
 
+
+    %matplotlib inline
 
 #### Development of Turing pattern (activator layer is shown)
 
@@ -149,7 +147,7 @@ Activator-Inhibitor systems in multiplex networks
     plt.show()
 
 
-![png](multiplex_turing_patterns_files/multiplex_turing_patterns_27_0.png)
+![png](multiplex_turing_patterns_files/multiplex_turing_patterns_25_0.png)
 
 
 #### Turing pattern shown in activator and inhibitor layer
@@ -168,13 +166,13 @@ Activator-Inhibitor systems in multiplex networks
     ax2 = fig.add_subplot(212)
     ax2.set_xlabel(r'$i$')
     ax2.set_ylabel(r'$v_i$')
-    ax2.set_ylim(8,11)
+    ax2.set_ylim(7.5,11.1)
     plot_sol(ax2,sol_inh,G.N,t=tsnap)
     
     plt.show()
 
 
-![png](multiplex_turing_patterns_files/multiplex_turing_patterns_29_0.png)
+![png](multiplex_turing_patterns_files/multiplex_turing_patterns_27_0.png)
 
 
 
