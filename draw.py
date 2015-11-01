@@ -33,47 +33,33 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 
-def get_position(G, base_pos=None,
-					layer_vertical_shift=2, 
-					layer_horizontal_shift=0.0,
-					proj_angle=45):
-        """Return the position of the nodes.
-    	      
-        Parameters:
-        -----------
-        base_pos : position of base graph 
-                   defualt value is None and thus 
-                   function creates a circular layout
-                   
-		layer_vertical_shift : vertical shift of the nodes coordinates 
-							   compared to the nodes position of the base 
-							   graph
-		
-		layer_horizontal_shift : horizontal shift of the nodes 
-								 coordinates compared to the nodes 
-								 position of the base graph
-		
-		proj_angle : angle of the tranfsormation
-        
-        Return: a dictionary with the nodes id and their coordinates
-        
-        Examples:
-        ---------
-        import multinetx as mx
-        N = 10
-		g1 = mx.erdos_renyi_graph(N,0.07,seed=218)
-		g2 = mx.erdos_renyi_graph(N,0.07,seed=211)
-        mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3])
-        pos = mx.get_position(mg,
-							  mx.random_layout(g1),
-							  layer_vertical_shift=0.2,
-							  layer_horizontal_shift=0.0,
-							  proj_angle=4)
-        """
+def get_position(G, base_pos=None,layer_vertical_shift=2,layer_horizontal_shift=0.0,proj_angle=45):
+    """Return the position of the nodes.
+    Parameters:
+    -----------
+    base_pos : position of base graph defualt value is None and thus function creates a circular layout
+    layer_vertical_shift : vertical shift of the nodes coordinates compared to the nodes position of the base graph
+    layer_horizontal_shift : horizontal shift of the nodes coordinates compared to the nodes position of the base graph
+    proj_angle : angle of the tranfsormation
+   
+    Return: a dictionary with the nodes id and their coordinates
+   
+    Examples:
+    ---------
+    import multinetx as mx
+    N = 10
+    g1 = mx.erdos_renyi_graph(N,0.07,seed=218)
+    g2 = mx.erdos_renyi_graph(N,0.07,seed=211)
+    mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3])
+    pos = mx.get_position(mg,mx.random_layout(g1),
+				layer_vertical_shift=0.2,
+				layer_horizontal_shift=0.0,
+				proj_angle=4)
+    """
     if base_pos is None:
         base_pos = nx.layout.circylar_layout(G.get_layer(0))
     else:
-		base_pos = base_pos 
+         base_pos = base_pos 
     
     pos = base_pos
     N = G.get_number_of_nodes_in_layer()
