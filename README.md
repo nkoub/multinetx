@@ -41,10 +41,13 @@ How to use multiNetX
 
     import multinetx as mx
 
+
+# Create a multiplex 1st way
+
 #### Create three Erd"os- R'enyi networks with N nodes for each layer
 
 
-    N = 8
+    N = 5
     g1 = mx.generators.erdos_renyi_graph(N,0.5,seed=218)
     g2 = mx.generators.erdos_renyi_graph(N,0.6,seed=211)
     g3 = mx.generators.erdos_renyi_graph(N,0.7,seed=208)
@@ -69,6 +72,29 @@ How to use multiNetX
 
     mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3],
                             inter_adjacency_matrix=adj_block)
+
+#### Weights can be added to the edges
+
+
+    mg.set_edges_weights(intra_layer_edges_weight=2,
+                         inter_layer_edges_weight=3)
+
+# Create a multiplex 2nd way
+
+
+    mg = mx.MultilayerGraph()
+
+#### Add layers
+
+
+    mg.add_layer(mx.generators.erdos_renyi_graph(N,0.5,seed=218))
+    mg.add_layer(mx.generators.erdos_renyi_graph(N,0.6,seed=211))
+    mg.add_layer(mx.generators.erdos_renyi_graph(N,0.7,seed=208))
+
+#### Create an instance of the MultilayerGraph class
+
+
+    mg.layers_interconnect(inter_adjacency_matrix=adj_block)
 
 #### Weights can be added to the edges
 
