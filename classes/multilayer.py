@@ -3,24 +3,26 @@
 
 ########################################################################
 #    
-#    multiNetX -- a python package for manipulating multilayer graphs
+#    multiNetX -- a python package for general multilayer graphs
 #
-#    Copyright (C) 2013-2015 by Nikos E. Kouvaris <nkouba@gmail.com>
-#    Project LASAGNE -- multi-LAyer SpAtiotemporal Generalized NEtworks
+#    (C) Copyright 2013-2015, Nikos E Kouvaris
+#    multiNetX is part of the deliverables of the LASAGNE project
+#    (multi-LAyer SpAtiotemporal Generalized NEtworks), 
+#    EU/FP7-2012-STREP-318132 (http://complex.ffn.ub.es/~lasagne/)
 #
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
+#    multiNetX is free software: you can redistribute it and/or modify 
+#    it under the terms of the GNU General Public License as published 
+#    by the Free Software Foundation, either version 3 of the License, 
+#    or (at your option) any later version.
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
+#    multiNetX is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of 
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+#    See the GNU General Public License for more details.
 #
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-########################################################################    
+#    You should have received a copy of the GNU General Public License 
+#    along with this program. If not, see http://www.gnu.org/licenses/.
+########################################################################     
 
 """
 MultilayerGraph: Base class for a multi-layer network
@@ -69,6 +71,27 @@ class MultilayerGraph(Graph):
         
         Examples:
         ---------
+        import multinetx as mx
+        N = 10
+		g1 = mx.erdos_renyi_graph(N,0.07,seed=218)
+		g2 = mx.erdos_renyi_graph(N,0.07,seed=211)
+		g3 = mx.erdos_renyi_graph(N,0.07,seed=211)
+                
+        adj_block = mx.lil_matrix(np.zeros((N*3,N*3)))
+		adj_block[0:  N,  N:2*N] = np.identity(N)    # L_12
+		adj_block[0:  N,2*N:3*N] = np.identity(N)    # L_13
+		#adj_block[N:2*N,2*N:3*N] = np.identity(N)    # L_23
+		adj_block += adj_block.T
+
+		mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3], 
+								inter_adjacency_matrix=adj_block)
+
+		mg.set_edges_weights(inter_layer_edges_weight=4)
+		mg.set_intra_edges_weights(layer=0,weight=1)
+		mg.set_intra_edges_weights(layer=1,weight=2)
+		mg.set_intra_edges_weights(layer=2,weight=3)
+		
+		
         """       
         ## Give an empty graph in the list_of_layers
         if list_of_layers is None:
@@ -113,7 +136,10 @@ class MultilayerGraph(Graph):
                                  "is not scipy.sparse.lil")         
                 
         ## Lists for intra-layer and inter-layer edges
-        self.intra_layer_edges = self.edges()
+        if list_of_layers is None:
+		    self.intra_layer_edges = []
+        else:
+		    self.intra_layer_edges = self.edges()			
         self.inter_layer_edges = []
         
         ## Inter-layer connection
@@ -133,9 +159,15 @@ class MultilayerGraph(Graph):
             self.list_of_layers=[layer]
         else:
             self.list_of_layers.append(layer)
-                                        
+            
         self.num_layers = len(self.list_of_layers)
         self.num_nodes_in_layers = self.list_of_layers[0].number_of_nodes()
+        
+        for i,j in layer.edges():
+			self.intra_layer_edges.append((
+			i+(len(self.list_of_layers)-1)*layer.number_of_nodes(),
+			j+(len(self.list_of_layers)-1)*layer.number_of_nodes()))
+			
         try:
             Graph.__init__(self,
                         Graph(disjoint_union_all(self.list_of_layers),
@@ -143,13 +175,13 @@ class MultilayerGraph(Graph):
         except multinetxError:
             raise multinetxError("Multiplex cannot inherit Graph properly")
 
-
         ## Check if all graphs have the same number of nodes
         for lg in self.list_of_layers:
             try:
                 assert(lg.number_of_nodes() == self.num_nodes_in_layers)
             except AssertionError:
                 raise multinetxError("Graph at layer does not have the same number of nodes")  
+                
     #:<~  
     def layers_interconnect(self, inter_adjacency_matrix=None):
         """Parameters:
@@ -250,6 +282,4 @@ class MultilayerGraph(Graph):
                 len(self.inter_layer_edges),
                 self.num_nodes_in_layers)
         return info
-    #:<~      
-        
- 
+    #:<~
