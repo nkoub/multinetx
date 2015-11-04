@@ -1,10 +1,10 @@
 ![png](logo.png) multiNetX v1.0 
 =========
 
-multiNetX is a python package for the manipulation and 
-study of multilayer networks. The core of this package 
+multiNetX is a python package for the manipulation and visualization of multilayer networks. The core of this package 
 is a MultilayerGraph, a class that inherits all properties
  from networkx.Graph(). 
+
 
 This allows for:
 
