@@ -40,70 +40,70 @@ import numpy as np
 
 #### Import the package MultiNetX
 
-
+```python
     import multinetx as mx
-
+```
 
 # Create a multiplex 1st way
 
 #### Create three Erd"os- R'enyi networks with N nodes for each layer
 
-
+```python
     N = 5
     g1 = mx.generators.erdos_renyi_graph(N,0.5,seed=218)
     g2 = mx.generators.erdos_renyi_graph(N,0.6,seed=211)
     g3 = mx.generators.erdos_renyi_graph(N,0.7,seed=208)
-
+```
 #### Create an 3Nx3N lil sparse matrix. It will be used to describe the layers interconnection
 
-
+```python
     adj_block = mx.lil_matrix(np.zeros((N*3,N*3)))
-
+```
 #### Define the type of interconnection among the layers (here we use identity matrices thus connecting one-to-one the nodes among layers)
 
-
+```python
     adj_block[0:  N,  N:2*N] = np.identity(N)    # L_12
     adj_block[0:  N,2*N:3*N] = np.identity(N)    # L_13
     adj_block[N:2*N,2*N:3*N] = np.identity(N)    # L_23
     
     # use symmetric inter-adjacency matrix
     adj_block += adj_block.T
-
+```
 #### Create an instance of the MultilayerGraph class
 
-
+```python
     mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3],
                             inter_adjacency_matrix=adj_block)
-
+```
 #### Weights can be added to the edges
 
-
+```python
     mg.set_edges_weights(intra_layer_edges_weight=2,
                          inter_layer_edges_weight=3)
-
+```
 # Create a multiplex 2nd way
 
-
+```python
     mg = mx.MultilayerGraph()
-
+```
 #### Add layers
 
-
+```python
     mg.add_layer(mx.generators.erdos_renyi_graph(N,0.5,seed=218))
     mg.add_layer(mx.generators.erdos_renyi_graph(N,0.6,seed=211))
     mg.add_layer(mx.generators.erdos_renyi_graph(N,0.7,seed=208))
-
+```
 #### Create an instance of the MultilayerGraph class
 
-
+```python
     mg.layers_interconnect(inter_adjacency_matrix=adj_block)
-
+```
 #### Weights can be added to the edges
 
-
+```python
     mg.set_edges_weights(intra_layer_edges_weight=2,
                          inter_layer_edges_weight=3)
-
+```
 
 The object mg inherits all properties from Graph of networkX, so that
 we can calculate adjacency or Laplacian matrices, their eigenvalues, etc.
@@ -117,41 +117,41 @@ How to plot multiplex networks
 
 ##### Import standard libraries
 
-
+```python
     import numpy as np
     import matplotlib.pyplot as plt
     %matplotlib inline
-
+```
 ##### Import the package MultiNetX
 
-
+```python
     import multinetx as mx
-
+```
 ##### Create three Erd"os- R'enyi networks with N nodes for each layer
 
-
+```python
     N = 50
     g1 = mx.erdos_renyi_graph(N,0.07,seed=218)
     g2 = mx.erdos_renyi_graph(N,0.07,seed=211)
     g3 = mx.erdos_renyi_graph(N,0.07,seed=208)
-
+```
 ### Edge colored nertwork (no inter-connected layers)
 
 ##### Create the multiplex network
 
-
+```python
     mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3])
-
+```
 ##### Set weights to the edges
 
-
+```python
     mg.set_intra_edges_weights(layer=0,weight=1)
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
-
+```
 ##### Plot the adjacency matrix and the multiplex networks
 
-
+```python
     fig = plt.figure(figsize=(15,5))
     ax1 = fig.add_subplot(121)
     ax1.imshow(mx.adjacency_matrix(mg,weight='weight').todense(),
@@ -178,17 +178,17 @@ How to plot multiplex networks
 
 ##### Define the type of interconnection between the layers
 
-
+```python
     adj_block = mx.lil_matrix(np.zeros((N*3,N*3)))
     
     adj_block[0:  N,  N:2*N] = np.identity(N)    # L_12
     adj_block[0:  N,2*N:3*N] = np.identity(N)    # L_13
     #adj_block[N:2*N,2*N:3*N] = np.identity(N)    # L_23
     adj_block += adj_block.T
-
+```
 ##### Create an instance of the MultilayerGraph class
 
-
+```python
     mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3], 
                             inter_adjacency_matrix=adj_block)
     
@@ -197,10 +197,10 @@ How to plot multiplex networks
     mg.set_intra_edges_weights(layer=0,weight=1)
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
-
+```
 ##### Plot the adjacency matrix and the multiplex networks
 
-
+```python
     fig = plt.figure(figsize=(15,5))
     ax1 = fig.add_subplot(121)
     ax1.imshow(mx.adjacency_matrix(mg,weight='weight').todense(),
@@ -218,7 +218,7 @@ How to plot multiplex networks
                      edge_color=[mg[a][b]['weight'] for a,b in mg.edges()],
                      edge_cmap=plt.cm.jet_r)
     plt.show()
-
+```
 
 ![png](plot_multiplex_networks_files/plot_multiplex_networks_19_0.png)
 
@@ -227,7 +227,7 @@ How to plot multiplex networks
 
 ##### Define the type of interconnection between the layers
 
-
+```python
     adj_block = mx.lil_matrix(np.zeros((N*4,N*4)))
     
     adj_block[0  :  N ,   N:2*N] = np.identity(N)   # L_12
@@ -236,10 +236,10 @@ How to plot multiplex networks
     adj_block[3*N:4*N , 2*N:3*N] = np.random.poisson(0.008,size=(N,N))   # L_14
     adj_block += adj_block.T
     adj_block[adj_block>1] = 1
-
+```
 ##### Create an instance of the MultilayerGraph class
 
-
+```python
     mg = mx.MultilayerGraph(list_of_layers=[g1,g2,g3,g1],
                             inter_adjacency_matrix=adj_block)
     
@@ -249,10 +249,10 @@ How to plot multiplex networks
     mg.set_intra_edges_weights(layer=1,weight=2)
     mg.set_intra_edges_weights(layer=2,weight=3)
     mg.set_intra_edges_weights(layer=3,weight=4)
-
+```
 ##### Plot the adjacency matrix and the multiplex networks
 
-
+```python
     fig = plt.figure(figsize=(15,5))
     ax1 = fig.add_subplot(121)
     ax1.imshow(mx.adjacency_matrix(mg,weight='weight').todense(),
@@ -270,7 +270,7 @@ How to plot multiplex networks
                      edge_color=[mg[a][b]['weight'] for a,b in mg.edges()],
                      edge_cmap=plt.cm.jet_r)
     plt.show()
-
+```
 
 ![png](plot_multiplex_networks_files/plot_multiplex_networks_26_0.png)
 
