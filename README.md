@@ -34,9 +34,9 @@ How to use multiNetX
 #### Import standard libraries for numerics
 
 
-    '''python
+    ```python
     import numpy as np
-    '''
+    ```
 
 #### Import the package MultiNetX
 
