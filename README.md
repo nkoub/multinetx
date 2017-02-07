@@ -28,12 +28,19 @@ In Unix/Linux you can do this by adding into your .bashrc file the following lin
 After request of some users I give here an example of how to "install" multinetx:
 
 Create a directory for your python libraries (if you do not have already)
+
 	mkdir my_python_libs
+
 Enter this directory
+
 	cd my_python_libs
+
 Clone the multinetx
+
 	git clone https://github.com/nkoub/multinetx.git
+
 Add multinetx to your PYTHONPATH by adding to your .bashrc the following line
+
 	export PYTHONPATH=/home/your_username/python_libs/multinetx:$PYTHONPATH
 
 
