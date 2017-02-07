@@ -18,12 +18,23 @@ This allows for:
 How to install multiNetX
 =========
 
-multinetx does not need intallation. 
-You simply download the source files and save them into your file system. 
-Then you have to add that directory to your PYTHONPATH. 
-In Unix/Linux you can do this by writting in the terminal the following command:
+You simply download/clone the source files into the directory you keep your python scripts. 
+Then you add that directory to your PYTHONPATH.
+In Unix/Linux you can do this by adding into your .bashrc file the following line:
 	
-	export PYTHONPATH=path_to_your_python_libraries/multinetx:$PYTHONPATH
+	export PYTHONPATH=/home/your_username/your_python_libs/multinetx:$PYTHONPATH
+
+
+After request of some users I give here an example of how to "install" multinetx:
+
+Create a directory for your python libraries (if you do not have already)
+	mkdir my_python_libs
+Enter this directory
+	cd my_python_libs
+Clone the multinetx
+	git clone https://github.com/nkoub/multinetx.git
+Add multinetx to your PYTHONPATH by adding to your .bashrc the following line
+	export PYTHONPATH=/home/your_username/python_libs/multinetx:$PYTHONPATH
 
 
 
