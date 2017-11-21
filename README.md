@@ -1,9 +1,9 @@
 ![png](logo.png) multiNetX v1.0 
 =========
 
-multiNetX is a python package for the manipulation and visualization of multilayer networks. The core of this package 
-is a MultilayerGraph, a class that inherits all properties
- from networkx.Graph(). 
+multiNetX is a python package for the manipulation and visualization of 
+multilayer networks. The core of this package is a MultilayerGraph, a class 
+that inherits all properties from networkx.Graph(). 
 
 
 This allows for:
@@ -298,12 +298,26 @@ plt.show()
     
 
 
+How to cite multiNetX 
+=========
+If multiNetX was useful and facilitated your research and work flow you can 
+use a reference in your publications by citing either of the following papers
+for which multiNetX was originally developed:
+ + N. E. Kouvaris, S. Hata and A. Diaz-Guilera, 
+Pattern formation in multiplex networks, 
+Scientific Reports 5, 10840 (2015).
+ + A. Sole-Ribata, M. De Domenico, N. E. Kouvaris, A. Diaz-Guilera, 
+S. Gomez and A. Arenas, 
+Spectral properties of the Laplacian of a multiplex network, 
+Phys. Rev. E 88, 032807 (2013).
+ + R. Amato, N. E Kouvaris, M. San Miguel and A. Diaz-Guilera, 
+Opinion competition dynamics on multiplex networks, New J. Phys. DOI: https://doi.org/10.1088/1367-2630/aa936a
 
 
 Copyright
 =========
 
-(C) Copyright 2013-2015, Nikos E Kouvaris
+(C) Copyright 2013-2017, Nikos E Kouvaris
 
 Each file in this folder is part of the multiNetX package.
 
