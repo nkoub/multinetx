@@ -18,7 +18,11 @@ This allows for:
 How to install multiNetX
 =========
 
-You simply download/clone the source files into the directory you keep your python scripts. 
+The easy way:
+
+    https://pypi.org/project/multinetx/
+
+Otherwise, you simply download/clone the source files into the directory you keep your python scripts. 
 Then you add that directory to your PYTHONPATH.
 In Unix/Linux you can do this by adding into your .bashrc file the two following lines:
 	
