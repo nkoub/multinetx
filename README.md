@@ -18,9 +18,9 @@ This allows for:
 How to install multiNetX
 =========
 
-The easy way:
+The easy way (see https://pypi.org/project/multinetx/). Simply, open your terminal and write:
 
-    https://pypi.org/project/multinetx/
+     pip install multinetx
 
 Otherwise, you simply download/clone the source files into the directory you keep your python scripts. 
 Then you add that directory to your PYTHONPATH.
