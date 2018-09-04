@@ -95,10 +95,19 @@ class MultilayerGraph(Graph):
             self.list_of_layers = list_of_layers
 
         # Number of layers
-        self.num_layers = len(self.list_of_layers)
-
+        self.num_layers = len(self.list_of_layers)        
+        
         # Number of nodes in each layer
-        self.num_nodes_in_layers = self.list_of_layers[0].number_of_nodes()
+        if list_of_layers is None:
+            self.num_nodes_in_layers = []
+        else:
+            self.num_nodes_in_layers = [list_of_layers[i].number_of_nodes() for i in range(self.num_layers)]
+            
+        
+        
+        # Number of nodes
+        self.num_nodes =  sum(self.num_nodes_in_layers)       
+        
         # Create the MultilayerGraph without inter-layer links.
         try:
             Graph.__init__(self,
@@ -106,18 +115,11 @@ class MultilayerGraph(Graph):
                                  **attr))
         except multinetxError:
             raise multinetxError("Multiplex cannot inherit Graph properly")
-        # Check if all graphs have the same number of nodes
-        for lg in self.list_of_layers:
-            try:
-                assert(lg.number_of_nodes() == self.num_nodes_in_layers)
-            except AssertionError:
-                raise multinetxError("Graph at layer does not have")
 
         # Make a zero lil matrix for inter_adjacency_matrix
         if inter_adjacency_matrix is None:
             inter_adjacency_matrix = lil_matrix(zeros(
-                    (self.num_nodes_in_layers*self.num_layers,
-                     self.num_nodes_in_layers*self.num_layers)))
+                    (self.num_nodes,self.num_nodes)))
 
         # Check if the matrix inter_adjacency_matrix is lil
         try:
@@ -144,14 +146,14 @@ class MultilayerGraph(Graph):
 
     # Define methods of the class
     def add_layer(self, layer, **attr):
-        if self.num_nodes_in_layers is 0:
+        if self.num_nodes is 0:
             self.list_of_layers = [layer]
         else:
             self.list_of_layers.append(layer)
+            self.num_nodes_in_layers.append(layer.number_of_nodes())
 
         self.num_layers = len(self.list_of_layers)
-        self.num_nodes_in_layers = self.list_of_layers[0].number_of_nodes()
-
+        
         for i, j in layer.edges():
             self.intra_layer_edges.append(
                     (i+(len(self.list_of_layers)-1)*layer.number_of_nodes(),
@@ -163,13 +165,6 @@ class MultilayerGraph(Graph):
             except multinetxError:
                 raise multinetxError("Multiplex cannot inherit Graph properly")
 
-        # Check if all graphs have the same number of nodes
-        for lg in self.list_of_layers:
-            try:
-                assert(lg.number_of_nodes() == self.num_nodes_in_layers)
-            except AssertionError:
-                raise multinetxError("Graph at layer does not have the\
-                                     same number of nodes")
 
     def layers_interconnect(self, inter_adjacency_matrix=None):
         """Parameters:
@@ -180,8 +175,8 @@ class MultilayerGraph(Graph):
         # Make a zero lil matrix for inter_adjacency_matrix
         if inter_adjacency_matrix is None:
             inter_adjacency_matrix = lil_matrix(
-                    zeros((self.num_nodes_in_layers*self.num_layers,
-                           self.num_nodes_in_layers*self.num_layers)))
+                    zeros((self.num_nodes,
+                           self.num_nodes)))
         # Check if the matrix inter_adjacency_matrix is lil
         try:
             assert(inter_adjacency_matrix.format == "lil")
@@ -198,9 +193,12 @@ class MultilayerGraph(Graph):
         """Return the number of graphs"""
         return self.num_layers
 
-    def get_number_of_nodes_in_layer(self):
+    def get_number_of_nodes_in_layers(self):
         """Return the number of nodes in each graph"""
         return self.num_nodes_in_layers
+    
+    def get_number_of_nodes(self):
+        return self.num_nodes;
 
     def get_intra_layer_edges(self):
         """Return a list with the intra-layer edges"""
@@ -209,10 +207,13 @@ class MultilayerGraph(Graph):
     def get_intra_layer_edges_of_layer(self, layer=0):
         """Return a list with the intra-layer edges of layer"""
         edge_list = self.get_layer(layer).edges()
-        elist = []
+        # liste of previous layer        
+        past = [self.num_nodes_in_layers[i] for i in range(layer)]
+        # number of previous nodes
+        num_past = sum(past)
+        elist = []        
         for i, j in edge_list:
-            elist.append((layer*self.get_number_of_nodes_in_layer()+i,
-                          layer*self.get_number_of_nodes_in_layer()+j))
+            elist.append((num_past+i,num_past+j))
         return elist
 
     def get_inter_layer_edges(self):
@@ -235,12 +236,14 @@ class MultilayerGraph(Graph):
         intra_layer_edges_weight
         inter_layer_edges_weight
         ---
-        Set the "intra_layer_edges_weight" and "intra_layer_edges_weight"
+        Set the "intra_layer_edges_weight" and "inter_layer_edges_weight"
         as an edge attribute with the name "weight"
         """
-        self.add_edges_from(self.intra_layer_edges,
+        if intra_layer_edges_weight is not None :
+            self.add_edges_from(self.intra_layer_edges,
                             weight=intra_layer_edges_weight)
-        self.add_edges_from(self.inter_layer_edges,
+        if inter_layer_edges_weight is not None :
+            self.add_edges_from(self.inter_layer_edges,
                             weight=inter_layer_edges_weight)
 
     def set_intra_edges_weights(self, layer=0, weight=None):
@@ -253,6 +256,7 @@ class MultilayerGraph(Graph):
         """
         elist = self.get_intra_layer_edges_of_layer(layer=layer)
         self.add_edges_from(elist, weight=weight)
+        
 
     def info(self):
         """Returns some information of the object MultilayerGraph"""
@@ -261,5 +265,5 @@ class MultilayerGraph(Graph):
                 inter_layer_edges:{},\
                 number_of_nodes_in_layer:{} ".format(
                 self.num_layers, len(self.intra_layer_edges),
-                len(self.inter_layer_edges), self.num_nodes_in_layers)
+                len(self.inter_layer_edges), self.num_nodes)
         return info

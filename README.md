@@ -298,6 +298,151 @@ plt.show()
 ![png](plot_multiplex_networks_files/plot_multiplex_networks_26_0.png)
 
 
+How to plot 3D multiplex networks
+=========
+
+#### Import specific libraries
+
+
+```python
+import numpy as np #  to use matrix
+import matplotlib.pyplot as plt # to use plot
+import networkx as nx # to use graphs
+import multinetx as mx # to use multinet
+import math # to use floor
+import matplotlib.cm as cmx # to use cmap (for data color values)
+import matplotlib.colors as colors # to use cmap (for data color values)
+import matplotlib.cbook as cb # to test if an object is a string
+
+from mpl_toolkits.mplot3d import Axes3D # to use 3D plot
+```
+
+#### Create multinet
+
+
+```python
+N1 = 10
+g1 = nx.cycle_graph(N1)
+N2 = 2*N1
+g2 = nx.cycle_graph(N2)
+
+adj_block = mx.lil_matrix(np.zeros((N1+N2,N1+N2)))
+
+for i in range(N1):
+    adj_block[i,N1+2*i] = 1
+
+adj_block += adj_block.T
+
+mg = mx.MultilayerGraph(list_of_layers=[g1,g2],inter_adjacency_matrix=adj_block)
+```
+
+#### Plot multiplex networks by layer
+
+
+```python
+# Create the figure
+fig = plt.figure()
+# Create 3D axes
+ax = fig.add_subplot(111, projection='3d')
+
+pos = mx.get_position3D(mg)
+
+
+intra_c = ['b','r']
+inter_c = 'grey'
+layer_c = ['b','r']
+
+mg.set_edges_weights(inter_layer_edges_weight=1, intra_layer_edges_weight=1)
+edge_color=[mg[a][b]['weight'] for a,b in mg.edges()]
+
+
+mx.FigureByLayer(mg, pos, ax, intra_edge_color=intra_c,node_color=layer_c, inter_edge_color=inter_c)
+ax.axis('off')
+```
+
+
+![png](plot_multiplex_networks_files/output_65_0.png)
+
+
+
+
+
+    (-1.0999999812245371,
+     1.0999999991059304,
+     -1.0999999595281706,
+     1.0999999980727702)
+
+
+
+#### Plot multiplex networks by nodes and edges
+
+
+```python
+# Create the figure
+fig = plt.figure()
+# Create 3D axes
+ax = fig.add_subplot(111, projection='3d')
+# Get position of all nodes
+pos = mx.get_position3D(mg)
+# Set edges weights
+mg.set_intra_edges_weights(layer=0,weight=1)
+mg.set_intra_edges_weights(layer=1,weight=2)
+mg.set_edges_weights(inter_layer_edges_weight=3)
+
+# Get edges and nodes color
+edge_color=[mg.edges.get((a,b))['weight'] for a,b in mg.edges()]
+node_color=[i for i in mg.nodes]
+
+# Plot multiplex network using options
+mx.Figure3D(mg, pos, ax, edge_color=edge_color, node_color=node_color, 
+         node_shape = 'D', edge_linewidth = 0.5, node_linewidth = 0,
+         edge_style = 'dashed', label = 'Node', with_labels = True,
+         font_size = 8, font_color = 'red', font_weight = 'heavy', 
+         font_family = 'fantasy')
+# Print legend
+ax.legend(scatterpoints=1)
+```
+
+    /home/icarrasco/fnh_k/multinetx_display/multinetx/draw.py:439: MatplotlibDeprecationWarning: The is_string_like function was deprecated in version 2.1.
+      if not cb.is_string_like(label):
+
+
+
+
+
+    <matplotlib.legend.Legend at 0x7fcc9b69fbe0>
+
+
+
+
+![png](plot_multiplex_networks_files/output_67_2.png)
+
+
+#### Plot partial multiplex networks by nodes and edges
+
+
+```python
+# Create the figure
+fig = plt.figure()
+# Create 3D axes
+ax = fig.add_subplot(111, projection='3d')
+
+# Get position of nodes
+pos = mx.get_position3D(mg)
+# Choose some edges
+edge_list = [(0, 1),(0, 10),(0, 9),(1, 2),(1, 12),(2, 3),(2, 14),(3, 16),(3, 4),(4, 18),(4, 5),(5, 20),(5, 6),(6, 22),(6, 7),(7, 8),(7, 24)]
+# Choose the edges color
+edge_color = [np.random.randint(1,100) for i in edge_list]
+# Choose some nodes
+node_list = [0,2,4,6,8,10,12,14,16,18,20]
+# Choose the nodes color
+node_color = [0,2,4,6,8,10,12,14,16,18,20]
+# Plot the partial mutiplex network
+mx.Figure3D(mg, pos, ax, node_list=node_list, node_color=node_color, edge_list=edge_list, edge_color = edge_color)
+```
+
+
+![png](plot_multiplex_networks_files/output_69_0.png)
 
     
 
