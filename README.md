@@ -1,4 +1,4 @@
-![png](logo.png) multiNetX v1.0 
+![png](logo.png) multiNetX v2.0 
 =========
 
 multiNetX is a python package for the manipulation and visualization of 
@@ -461,13 +461,20 @@ Phys. Rev. E 88, 032807 (2013). http://journals.aps.org/pre/abstract/10.1103/Phy
 Copyright
 =========
 
-(C) Copyright 2013-2017, Nikos E Kouvaris
+(C) Copyright 2013-now, Nikos E Kouvaris
 
 Each file in this folder is part of the multiNetX package.
 
-multiNetX is part of the deliverables of the LASAGNE project 
+
+multiNetX v1.0 is part of the deliverables of the LASAGNE project 
 (multi-LAyer SpAtiotemporal Generalized NEtworks),
 EU/FP7-2012-STREP-318132 (http://complex.ffn.ub.es/~lasagne/)
+
+
+multiNetX v2.0 is an extension of the version 1.0 and has the additions made by 
+Ines Carrasco (https://github.com/InesCarrasco) during her intership in the 
+University of Namur and the Namur Institute for Complex Systems (naXys) the summer of 2018.
+
 
 multiNetX is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
