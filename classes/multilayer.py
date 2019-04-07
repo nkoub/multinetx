@@ -91,22 +91,13 @@ class MultilayerGraph(Graph):
         # Give an empty graph in the list_of_layers
         if list_of_layers is None:
             self.list_of_layers = [Graph()]
-        else:
-            self.list_of_layers = list_of_layers
-
-        # Number of layers
-        self.num_layers = len(self.list_of_layers)        
-        
-        # Number of nodes in each layer
-        if list_of_layers is None:
             self.num_nodes_in_layers = []
         else:
-            self.num_nodes_in_layers = [list_of_layers[i].number_of_nodes() for i in range(self.num_layers)]
-            
-        
+            self.list_of_layers = list_of_layers
+            self.num_nodes_in_layers = [layers.number_of_nodes() for layer in list_of_layers]
         
         # Number of nodes
-        self.num_nodes =  sum(self.num_nodes_in_layers)       
+        self.num_nodes = sum(self.num_nodes_in_layers)
         
         # Create the MultilayerGraph without inter-layer links.
         try:
@@ -150,9 +141,9 @@ class MultilayerGraph(Graph):
             self.list_of_layers = [layer]
         else:
             self.list_of_layers.append(layer)
-            self.num_nodes_in_layers.append(layer.number_of_nodes())
 
-        self.num_layers = len(self.list_of_layers)
+        self.num_nodes_in_layers.append(layer.number_of_nodes())
+        self.num_nodes = sum(self.num_nodes_in_layers)
         
         for i, j in layer.edges():
             self.intra_layer_edges.append(
@@ -191,7 +182,7 @@ class MultilayerGraph(Graph):
 
     def get_number_of_layers(self):
         """Return the number of graphs"""
-        return self.num_layers
+        return len(self.list_of_layers)
 
     def get_number_of_nodes_in_layers(self):
         """Return the number of nodes in each graph"""
@@ -264,6 +255,6 @@ class MultilayerGraph(Graph):
                 intra_layer_edges:{},\
                 inter_layer_edges:{},\
                 number_of_nodes_in_layer:{} ".format(
-                self.num_layers, len(self.intra_layer_edges),
+                len(self.list_of_layers), len(self.intra_layer_edges),
                 len(self.inter_layer_edges), self.num_nodes)
         return info
