@@ -150,8 +150,9 @@ class MultilayerGraph(Graph):
             self.list_of_layers = [layer]
         else:
             self.list_of_layers.append(layer)
-            self.num_nodes_in_layers.append(layer.number_of_nodes())
 
+        self.num_nodes_in_layers.append(layer.number_of_nodes())
+        self.num_nodes = sum(self.num_nodes_in_layers)
         self.num_layers = len(self.list_of_layers)
         
         for i, j in layer.edges():
