@@ -94,7 +94,7 @@ class MultilayerGraph(Graph):
             self.num_nodes_in_layers = []
         else:
             self.list_of_layers = list_of_layers
-            self.num_nodes_in_layers = [layers.number_of_nodes() for layer in list_of_layers]
+            self.num_nodes_in_layers = [layer.number_of_nodes() for layer in list_of_layers]
         
         # Number of nodes
         self.num_nodes = sum(self.num_nodes_in_layers)
