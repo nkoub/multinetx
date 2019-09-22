@@ -1,4 +1,4 @@
-![png](logo.png) multiNetX v2.0 
+![png](logo.png) multiNetX version 3.0 
 =========
 
 multiNetX is a python package for the manipulation and visualization of 
@@ -15,40 +15,23 @@ This allows for:
 
 
 
-How to install multiNetX
-=========
+# How to install multiNetX
 
-You simply download/clone the source files into the directory you keep your python scripts. 
-Then you add that directory to your PYTHONPATH.
-In Unix/Linux you can do this by adding into your .bashrc file the two following lines:
-	
-	export PYTHONPATH=/home/your_username/your_python_libs:$PYTHONPATH
-	export PYTHONPATH=/home/your_username/your_python_libs/multinetx:$PYTHONPATH
-
-
-After request of some users I give here an example of how to "install" multinetx:
-
-Create a directory for your python libraries (if you do not have already)
-
-	mkdir your_python_libs
-
-Enter this directory
-
-	cd your_python_libs
-
-Clone the multinetx
-
-	git clone https://github.com/nkoub/multinetx.git
-
-Add multinetx to your PYTHONPATH by adding to your .bashrc the two following lines:
-
-	export PYTHONPATH=/home/your_username/your_python_libs:$PYTHONPATH
-	export PYTHONPATH=/home/your_username/your_python_libs/multinetx:$PYTHONPATH
+1. Clone the repository of multinetx into your system:
+    ```bash
+    git clone https://github.com/nkoub/multinetx.git
+    ```
+2. Enter in the multinetx directory:
+    ```bash
+    cd multinetx
+    ```
+3. and then simply write:
+    ```bash
+    python setup.py install
+    ```
 
 
-
-How to use multiNetX
-=========
+# How to use multiNetX
 
 
 #### Import standard libraries for numerics
@@ -190,7 +173,7 @@ mx.draw_networkx(mg,pos=pos,ax=ax2,node_size=50,with_labels=False,
 plt.show()
 ```
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_12_0.png)
+![png](examples/plot_multiplex_networks_files/plot_multiplex_networks_12_0.png)
 
 
 ### Regular interconnected multiplex
@@ -239,7 +222,7 @@ mx.draw_networkx(mg,pos=pos,ax=ax2,node_size=50,with_labels=False,
 plt.show()
 ```
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_19_0.png)
+![png](examples/plot_multiplex_networks_files/plot_multiplex_networks_19_0.png)
 
 
 ### General multiplex multiplex 
@@ -291,7 +274,7 @@ mx.draw_networkx(mg,pos=pos,ax=ax2,node_size=50,with_labels=False,
 plt.show()
 ```
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_26_0.png)
+![png](examples/plot_multiplex_networks_files/plot_multiplex_networks_26_0.png)
 
 
 How to plot 3D multiplex networks
@@ -357,7 +340,7 @@ ax.axis('off')
 ```
 
 
-![png](plot_multiplex_networks_files/output_65_0.png)
+![png](examples/plot_multiplex_networks_files/output_65_0.png)
 
 
 
@@ -411,7 +394,7 @@ ax.legend(scatterpoints=1)
 
 
 
-![png](plot_multiplex_networks_files/output_67_2.png)
+![png](examples/plot_multiplex_networks_files/output_67_2.png)
 
 
 #### Plot partial multiplex networks by nodes and edges
@@ -438,7 +421,7 @@ mx.Figure3D(mg, pos, ax, node_list=node_list, node_color=node_color, edge_list=e
 ```
 
 
-![png](plot_multiplex_networks_files/output_69_0.png)
+![png](examples/plot_multiplex_networks_files/output_69_0.png)
 
     
 
@@ -461,20 +444,23 @@ Phys. Rev. E 88, 032807 (2013). http://journals.aps.org/pre/abstract/10.1103/Phy
 Copyright
 =========
 
-(C) Copyright 2013-now, Nikos E Kouvaris
+(C) Copyright 2013-2019, Nikos E Kouvaris
 
 Each file in this folder is part of the multiNetX package.
 
 
-multiNetX v1.0 is part of the deliverables of the LASAGNE project 
+**multiNetX v1.0** is part of the deliverables of the LASAGNE project 
 (multi-LAyer SpAtiotemporal Generalized NEtworks),
 EU/FP7-2012-STREP-318132 (http://complex.ffn.ub.es/~lasagne/)
 
 
-multiNetX v2.0 is an extension of the version 1.0 and has the additions made by 
-Ines Carrasco (https://github.com/InesCarrasco) during her intership in the 
-University of Namur and the Namur Institute for Complex Systems (naXys) the summer of 2018.
+**multiNetX v2.0** is an extension of the version 1.0 and has the 
+additions made by *Ines Carrasco* (https://github.com/InesCarrasco) 
+during her internship in the University of Namur 
+and the Namur Institute for Complex Systems (naXys) the summer of 2018.
 
+**multiNetX v3.0** provides is buid on the previous versions and 
+provides an easy installation m,ethod via pypip
 
 multiNetX is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
