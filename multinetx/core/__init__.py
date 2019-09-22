@@ -5,7 +5,7 @@
 #
 #    multiNetX -- a python package for general multilayer graphs
 #
-#    (C) Copyright 2013-2015, Nikos E Kouvaris
+#    (C) Copyright 2013-2019, Nikos E Kouvaris
 #    multiNetX is part of the deliverables of the LASAGNE project
 #    (multi-LAyer SpAtiotemporal Generalized NEtworks),
 #    EU/FP7-2012-STREP-318132 (http://complex.ffn.ub.es/~lasagne/)
@@ -25,19 +25,8 @@
 ########################################################################
 
 """
-Exception handling
+multiNetX - a general multilayer graph manipulation python module based
+on NetworkX
 """
 
-# the parent class of all Exceptions
-
-
-class multinetxException(Exception):
-    """Base class for exceptions in multiNetX."""
-
-
-class multinetxError(multinetxException):
-    """Exception for a serious error in multiNetX"""
-
-
-class SpectralAnalysisError(multinetxException):
-    """Exception for a problem in the spectral properties of the Laplacian"""
+__all__ = ["multilayer", "exceptions", "utilities", "draw"]
