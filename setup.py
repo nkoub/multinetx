@@ -16,7 +16,10 @@ Licence, GPL
 from setuptools import setup, find_packages
 
 NAME = "multinetx"
-VERSION = "2.1"
+VERSION = "3.0"
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name=NAME,
@@ -24,8 +27,7 @@ setup(
     description="multiNetX",
     licence="GPL3",
     __author__ = "Nikos E. Kouvaris <nkouba@gmail.com>",
-    copyright="Copyright (C) 2013-2019 by Nikos E. Kouvaris <nkouba@gmail.com>."
-              "Project LASAGNE -- multi-LAyer SpAtiotemporal Generalized NEtworks",
+    copyright="Copyright (C) 2013-2019 by Nikos E. Kouvaris <nkouba@gmail.com>",
     author="Nikos E Kouvaris",
     author_email="nkouba@gmail.com",
     url="https://github.com/nkoub/multinetx",
@@ -33,6 +35,11 @@ setup(
     package_dir={NAME: NAME},
     packages=find_packages(),
     setup_requires=["pytest", "pytest-runner"],
-    long_description="multiNetX is a python package for the manipulation and visualization of multilayer networks."
-                     "It is build on NetworkX"
+    long_description=long_description,
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: GPL3",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6',
 )
