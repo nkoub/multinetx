@@ -24,7 +24,7 @@ with open("README.md", "r") as fh:
 setup(
     name=NAME,
     version=VERSION,
-    licence="GPL3",
+    license="GPL3",
     author="Nikos E Kouvaris",
     author_email="nkouba@gmail.com",
     description="multiNetX",
