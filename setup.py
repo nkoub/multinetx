@@ -35,6 +35,8 @@ setup(
     package_dir={NAME: NAME},
     packages=find_packages(),
     setup_requires=["pytest", "pytest-runner"],
+    include_package_data=True,
+    long_description_content_type='text/markdown',
     long_description=long_description,
     classifiers=[
         "Programming Language :: Python :: 3",
