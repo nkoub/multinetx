@@ -26,7 +26,6 @@ setup(
     version=VERSION,
     description="multiNetX",
     licence="GPL3",
-    __author__ = "Nikos E. Kouvaris <nkouba@gmail.com>",
     copyright="Copyright (C) 2013-2019 by Nikos E. Kouvaris <nkouba@gmail.com>",
     author="Nikos E Kouvaris",
     author_email="nkouba@gmail.com",
