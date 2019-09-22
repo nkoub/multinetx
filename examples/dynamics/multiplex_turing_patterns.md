@@ -147,7 +147,7 @@
     plt.show()
 
 
-![png](multiplex_turing_patterns_files/multiplex_turing_patterns_25_0.png)
+![png](examples/multiplex_turing_patterns_files/multiplex_turing_patterns_25_0.png)
 
 
 #### Turing pattern shown in activator and inhibitor layer
@@ -172,7 +172,7 @@
     plt.show()
 
 
-![png](multiplex_turing_patterns_files/multiplex_turing_patterns_27_0.png)
+![png](examples/multiplex_turing_patterns_files/multiplex_turing_patterns_27_0.png)
 
 
 

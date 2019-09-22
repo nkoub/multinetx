@@ -55,7 +55,7 @@
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_12_0.png)
+![png](examples/plot_multiplex_networks_files/plot_multiplex_networks_12_0.png)
 
 
 ### Regular interconnected multiplex
@@ -104,7 +104,7 @@
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_19_0.png)
+![png](examples/plot_multiplex_networks_files/plot_multiplex_networks_19_0.png)
 
 
 ### General multiplex multiplex 
@@ -156,7 +156,7 @@
     plt.show()
 
 
-![png](plot_multiplex_networks_files/plot_multiplex_networks_26_0.png)
+![png](examples/plot_multiplex_networks_files/plot_multiplex_networks_26_0.png)
 
 
 

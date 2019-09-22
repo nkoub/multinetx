@@ -1,71 +1,81 @@
-\documentclass[]{article}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
-\fi
-% use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\usepackage{graphicx}
-% Redefine \includegraphics so that, unless explicit options are
-% given, the image width will not exceed the width of the page.
-% Images get their normal width if they fit onto the page, but
-% are scaled down if they would overflow the margins.
-\makeatletter
-\def\ScaleIfNeeded{%
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
-}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-{%
- \catcode`\@=11\relax%
- \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
-}%
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\setcounter{secnumdepth}{0}
+\documentclass[11pt]{article}
 
-\author{}
-\date{}
+\usepackage{amssymb,amsmath,amsfonts}
+\usepackage{graphicx} % Include figure files
+\usepackage{bm} % bold math
+
+\textwidth40em
+\oddsidemargin1em
+\textheight135ex
+\topmargin-10mm
+%\parindent=0pt
+
+\renewcommand{\baselinestretch}{1.3}
+%\setlength{\parskip}{1em}
+
+\pagestyle{plain}
 
 \begin{document}
-\section{Create a multiplex 1st way}\label{create-a-multiplex-1st-way}
+
+\thispagestyle{empty}
+
+%\centerline{\includegraphics[height=3cm]{LASAGNE-color-on-white_III.png}\hfill\includegraphics[height=2.5cm]{FP7-gen-RGB.jpg}}
+\centerline{\includegraphics[height=4cm]{LASAGNE-color-on-white_III.png}}
+
+\vskip1.5cm
+\centerline{\LARGE\bf Software library for public use}
+
+\vskip1cm
+\centerline{\Large\bf Deliverable Number D3.5}
+
+%\vskip0.5cm
+%\centerline{\LARGE\bf Title of deliverable}
+%\centerline{\LARGE\bf (with subtitle)}
+
+\vskip2cm
+\begin{center}
+\begin{tabular}{||l|c||}%l
+\hline\hline
+{\bf Project Title:} & multi-LAyer SpAtiotemporal Generalized NEtworks\\
+\hline
+{\bf Project Acronym:} & LASAGNE\\
+\hline
+{\bf Contract Number:} & FP7-2012-STREP-318132\\
+\hline\hline
+\end{tabular}
+
+\vskip2cm
+\begin{tabular}{||l|l||}
+\hline\hline
+{\bf Deliverable Number:} & 3.5\\
+\hline
+{\bf Deliverable Title:} & Software library for public use\\
+\hline
+{\bf Deliverable Type:} & Report\\
+\hline
+{\bf Dissemination Level:} & PU (Public)\\
+\hline
+{\bf Deliverable Date:} & \today\hspace{6.8cm}\mbox{}\\
+\hline
+{\bf Contributing Workpackage:} & WP3 - Dynamical processes\\
+\hline\hline
+\end{tabular}
+\end{center}
+
+\vskip 1.5cm
+\centerline{\includegraphics[height=2.5cm]{FP7-gen-RGB.jpg}}
+
+\setcounter{page}{0}
+\newpage
+
+\centerline{\includegraphics[height=2.5cm]{logo.png}} 
+
+\vspace{25pt}
+
+multiNetX is a python package for the manipulation and study of
+multilayer networks. The core of this package is a MultilayerGraph, a
+class that inherits all properties from networkx.Graph().
+
 
 multiNetX is a python package for the manipulation and study of
 multilayer networks. The core of this package is a MultilayerGraph, a
@@ -84,6 +94,12 @@ This allows for:
   Visualizing dynamical processes by coloring the nodes and links
   accordingly
 \end{itemize}
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
 
 \section{How to install multiNetX}\label{how-to-install-multinetx}
 
@@ -220,9 +236,12 @@ print 'MultilayerGraph edges:',\
 
 MultilayerGraph edges: 
 
- intra-layer edges:  [(0, 1), (0, 2), (0, 4), (1, 2), (1, 4), (2, 3), (2, 4), (3, 4), (5, 6), (5, 7), (5, 8), (5, 9), (6, 7), (6, 8), (6, 9), (7, 8), (7, 9), (8, 9), (10, 11), (10, 12), (10, 13), (10, 14), (11, 12), (11, 13), (11, 14), (12, 13), (12, 14)] 
+ intra-layer edges:  [(0, 1), (0, 2), (0, 4), (1, 2), (1, 4), (2, 3), (2, 4), (3, 4),
+ (5, 6), (5, 7), (5, 8), (5, 9), (6, 7), (6, 8), (6, 9), (7, 8), (7, 9), (8, 9), (10, 11), 
+ (10, 12), (10, 13), (10, 14), (11, 12), (11, 13), (11, 14), (12, 13), (12, 14)] 
 
- inter-layer edges:  [(5, 0), (6, 1), (7, 2), (8, 3), (9, 4), (10, 0), (10, 5), (11, 1), (11, 6), (12, 2), (12, 7), (13, 3), (13, 8), (14, 4), (14, 9)] 
+ inter-layer edges:  [(5, 0), (6, 1), (7, 2), (8, 3), (9, 4), (10, 0), (10, 5),
+ (11, 1), (11, 6), (12, 2), (12, 7), (13, 3), (13, 8), (14, 4), (14, 9)] 
 
 
 
@@ -232,8 +251,10 @@ print 'intralayer edges of 2: ',mg.get_intra_layer_edges_of_layer(layer=1)
 print 'intralayer edges of 3: ',mg.get_intra_layer_edges_of_layer(layer=2)
 
 intralayer edges of 1:  [(0, 1), (0, 2), (0, 4), (1, 2), (1, 4), (2, 3), (2, 4), (3, 4)]
-intralayer edges of 2:  [(5, 6), (5, 7), (5, 8), (5, 9), (6, 7), (6, 8), (6, 9), (7, 8), (7, 9), (8, 9)]
-intralayer edges of 3:  [(10, 11), (10, 12), (10, 13), (10, 14), (11, 12), (11, 13), (11, 14), (12, 13), (12, 14)]
+intralayer edges of 2:  [(5, 6), (5, 7), (5, 8), (5, 9), (6, 7), (6, 8), (6, 9), (7, 8), 
+(7, 9), (8, 9)]
+intralayer edges of 3:  [(10, 11), (10, 12), (10, 13), (10, 14), (11, 12), (11, 13), 
+(11, 14), (12, 13), (12, 14)]
 \end{verbatim}
 
 \paragraph{A layer can be chosen: it is a networkx.Graph so it inherits
@@ -299,8 +320,8 @@ ax.imshow(mx.adjacency_matrix(mg,weight=None).todense(),
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{output_35_0.png}
-\caption{png}
+\includegraphics[width=0.5\textwidth]{output_35_0.png}
+% \caption{png}
 \end{figure}
 
 \begin{verbatim}
@@ -354,8 +375,8 @@ ax.imshow(mx.laplacian_matrix(mg,weight=None).todense(),
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{output_37_0.png}
-\caption{png}
+\includegraphics[width=0.5\textwidth]{output_37_0.png}
+% \caption{png}
 \end{figure}
 
 \begin{verbatim}
@@ -416,8 +437,8 @@ plt.show()
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{output_46_0.png}
-\caption{png}
+\includegraphics[width=\textwidth]{output_46_0.png}
+% \caption{png}
 \end{figure}
 
 \subsubsection{Regular interconnected
@@ -465,8 +486,8 @@ plt.show()
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{output_51_0.png}
-\caption{png}
+\includegraphics[width=\textwidth]{output_51_0.png}
+% \caption{png}
 \end{figure}
 
 \subsubsection{General multiplex}\label{general-multiplex}
@@ -519,38 +540,251 @@ plt.show()
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{output_57_0.png}
-\caption{png}
+\includegraphics[width=\textwidth]{output_57_0.png}
+% \caption{png}
 \end{figure}
+
+
+
+\section{Dynamical processes on top of multiplex networks}
+
+\paragraph{Import libraries}\label{import-libraries}
+
+\begin{verbatim}
+import numpy as np
+import matplotlib.pylab as plt
+
+import multinetx as mx
+
+from scipy.integrate import ode
+\end{verbatim}
+
+\paragraph{The Mimura-Murray ecological
+model}\label{the-mimura-murray-ecological-model}
+
+\begin{verbatim}
+def mimura_murray_duplex(t, y0, G):
+    f = y0.copy()    
+    u = y0[:G.N] # activator
+    v = y0[G.N:] # inhibitor    
+    sum_lapl_u = G.diff[0] * u * G.lapl[0:G.N,0:G.N]   
+    sum_lapl_v = G.diff[1] * v * G.lapl[G.N:2*G.N,G.N:2*G.N]    
+    # activator
+    f[:G.N] = ( (G.a + G.b * u - u * u) / G.c - v) * u + sum_lapl_u
+    # inhibitor   
+    f[G.N:] = (u - 1.0 - G.d * v) * v + sum_lapl_v
+    return f 
+\end{verbatim}
+
+\paragraph{Define the integrate
+method}\label{define-the-integrate-method}
+
+\begin{verbatim}
+def integrate(G, dt=0.5, tmax=200, method='dopri5', store_solution=True):
+    '''This function integrates the MM model'''
+    ## Setup the integrator 
+    t0 = 0.0
+    sol = [G.species]
+    solver = ode(G.rhs).set_f_params(G)
+    int_pars = dict(atol=1E-8, rtol=1E-8, first_step=1E-2,
+                    max_step=2E1, nsteps=2E4)
+    solver.set_integrator(method,**int_pars)
+    solver.set_initial_value(G.species,t0)
+    ## Integrate the system    
+    while solver.successful() and solver.t < tmax:
+        solver.integrate(solver.t+dt)
+        sol.append(solver.y)
+    return np.array(sol)
+\end{verbatim}
+
+\paragraph{Create the activator-inhibitor
+multiplex}\label{create-the-activator-inhibitor-multiplex}
+
+\begin{verbatim}
+G = mx.MultilayerGraph()
+
+
+N = 350
+G.add_layer(mx.barabasi_albert_graph(n=N, m=5,   seed=812))   # activators
+G.add_layer(mx.barabasi_albert_graph(n=N, m=200, seed=812))   # inhibitors
+\end{verbatim}
+
+\paragraph{Laplacian matrices of the
+multiplex}\label{laplacian-matrices-of-the-multiplex}
+
+\begin{verbatim}
+G.lapl = (-1.0) * mx.laplacian_matrix(G,weight=None)
+\end{verbatim}
+
+\paragraph{Right-hand-side of the Mimura-Murray
+model}\label{right-hand-side-of-the-mimura-murray-model}
+
+\begin{verbatim}
+G.rhs = mimura_murray_duplex
+\end{verbatim}
+
+\paragraph{Define the parameters of the model (They correspond to the
+uniform steady
+state)}\label{define-the-parameters-of-the-model-they-correspond-to-the-uniform-steady-state}
+
+\begin{verbatim}
+G.a = 35.0
+G.b = 16.0
+G.c = 9.0
+G.d = 0.4
+
+
+G.N = G.get_number_of_nodes_in_layer() 
+G.diff = [0.12, 0.12]  
+\end{verbatim}
+
+\paragraph{Initial conditions and
+perturbation}\label{initial-conditions-and-perturbation}
+
+\begin{verbatim}
+activators = np.empty(G.N,dtype=np.double)
+inhibitors = np.empty(G.N,dtype=np.double)
+activators[:] = 5.0
+inhibitors[:] = 10.0
+activators[10] += 10E-5
+G.species = np.concatenate((activators,inhibitors),axis=0)
+\end{verbatim}
+
+\paragraph{Integrate the system}\label{integrate-the-system}
+
+\begin{verbatim}
+sol = integrate(G,dt=0.5,tmax=200,method='dopri5')
+\end{verbatim}
+
+\paragraph{Sort the solution according to decreasing degree of the
+activator
+layer}\label{sort-the-solution-according-to-decreasing-degree-of-the-activator-layer}
+
+\begin{verbatim}
+deg_act = G.get_layer(0).degree().values()
+sdeg_act = np.argsort(deg_act)[::-1]
+sdeg_sol = np.append(sdeg_act,G.N+sdeg_act)
+ssol = sol[:,sdeg_sol]
+
+
+def plot_sol(ax, insol, NN, t=0):
+    ax.plot(insol[t],':',color='green',lw=1.1,alpha=1)
+    sc = ax.scatter(np.arange(NN),insol[t],
+                    c=insol[t],s=25,marker='o',lw=1.2,
+                    vmin=min(insol[t]),vmax=max(insol[t]),
+                    cmap=plt.cm.YlOrBr)
+    ax.set_xlim(-5,NN)
+
+
+%matplotlib inline
+\end{verbatim}
+
+\paragraph{Development of Turing pattern (activator layer is
+shown)}\label{development-of-turing-pattern-activator-layer-is-shown}
+
+\begin{verbatim}
+sol_act = ssol[:,:G.N]
+
+fig = plt.figure()
+ax1 = fig.add_subplot(221)
+ax1.set_ylabel(r'$u_i$')
+ax1.set_title(r'$t=0$')
+ax1.set_ylim(0,10)
+ax1.set_xticks([])
+plot_sol(ax1,sol_act,G.N,t=0)
+
+ax2 = fig.add_subplot(222)
+ax2.set_ylabel(r'$v_i$')
+ax2.set_title(r'$t=18$')
+ax2.set_ylim(0,10)
+ax2.set_xticks([])
+plot_sol(ax2,sol_act,G.N,t=18)
+
+ax3 = fig.add_subplot(223)
+ax3.set_xlabel(r'$i$')
+ax3.set_ylabel(r'$v_i$')
+ax3.set_title(r'$t=21$')
+ax3.set_ylim(0,10)
+plot_sol(ax3,sol_act,G.N,t=21)
+
+ax4 = fig.add_subplot(224)
+ax4.set_xlabel(r'$i$')
+ax4.set_ylabel(r'$v_i$')
+ax4.set_title(r'$t=400$')
+ax4.set_ylim(0,10)
+plot_sol(ax4,sol_act,G.N,t=400)
+
+plt.show()
+\end{verbatim}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{multiplex_turing_patterns_25_0.png}
+% \caption{png}
+\end{figure}
+
+\paragraph{Turing pattern shown in activator and inhibitor
+layer}\label{turing-pattern-shown-in-activator-and-inhibitor-layer}
+
+\begin{verbatim}
+sol_act = ssol[:,:G.N]
+sol_inh = ssol[:,G.N:]
+tsnap = 400
+
+fig = plt.figure()
+ax1 = fig.add_subplot(211)
+ax1.set_ylabel(r'$u_i$')
+ax1.set_ylim(0,10)
+plot_sol(ax1,sol_act,G.N,t=tsnap)
+
+ax2 = fig.add_subplot(212)
+ax2.set_xlabel(r'$i$')
+ax2.set_ylabel(r'$v_i$')
+ax2.set_ylim(7.5,11.1)
+plot_sol(ax2,sol_inh,G.N,t=tsnap)
+
+plt.show()
+\end{verbatim}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\textwidth]{multiplex_turing_patterns_27_0.png}
+% \caption{png}
+\end{figure}
+
+
+\pagebreak
 
 \section{Copyright}\label{copyright}
 
-\begin{enumerate}
-\def\labelenumi{(\Alph{enumi})}
-\setcounter{enumi}{2}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Copyright 2013-2015, Nikos E Kouvaris
-\end{enumerate}
+Copyright \textcopyright~ 2013-2019, Nikos E Kouvaris
 
-Each file in this folder is part of the multiNetX package.
 
-multiNetX is part of the deliverables of the LASAGNE project
+\vspace{10pt}
+\noindent Each file in this folder is part of the multiNetX package.
+
+\vspace{10pt}
+\noindent multiNetX is part of the deliverables of the LASAGNE project
 (multi-LAyer SpAtiotemporal Generalized NEtworks),
 EU/FP7-2012-STREP-318132
 (http://complex.ffn.ub.es/\textasciitilde{}lasagne/)
 
-multiNetX is free software: you can redistribute it and/or modify it
+\vspace{10pt}
+\noindent multiNetX is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the
 Free Software Foundation, either version 3 of the License, or (at your
 option) any later version.
 
-multiNetX is distributed in the hope that it will be useful, but WITHOUT
+\vspace{10pt}
+\noindent multiNetX is distributed in the hope that it will be useful, but WITHOUT
 ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 more details.
 
-You should have received a copy of the GNU General Public License along
-with this program. If not, see \url{http://www.gnu.org/licenses/}.
+\vspace{10pt}
+\noindent You should have received a copy of the GNU General Public License along
+with this program. If not, see http://www.gnu.org/licenses/.
 
-\end{document}
+
+
+\end{document} 

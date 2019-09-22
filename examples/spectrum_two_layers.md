@@ -72,7 +72,7 @@
     plt.show()
 
 
-![png](spectrum_two_layers_files/spectrum_two_layers_17_0.png)
+![png](examples/spectrum_two_layers_files/spectrum_two_layers_17_0.png)
 
 
 

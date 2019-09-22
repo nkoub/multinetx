@@ -159,7 +159,7 @@
               origin='upper',interpolation='nearest',cmap=plt.cm.binary);
 
 
-![png](create_multiplex_files/create_multiplex_22_0.png)
+![png](examples/create_multiplex_files/create_multiplex_22_0.png)
 
 
 
@@ -229,7 +229,7 @@
               origin='upper',interpolation='nearest',cmap=plt.cm.binary);
 
 
-![png](create_multiplex_files/create_multiplex_24_0.png)
+![png](examples/create_multiplex_files/create_multiplex_24_0.png)
 
 
 
