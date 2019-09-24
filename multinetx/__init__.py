@@ -41,26 +41,20 @@ except ImportError:
     raise ImportError("SciPy is required")
 
 # import all modules of the packages
-from multinetx.core.draw import *
-from multinetx.core.exceptions import *
-from multinetx.core.multilayer import *
-from multinetx.core.utilities import *
-from multinetx.core import *
 from multinetx import *
+from .core.draw import *
+from .core.exceptions import *
+from .core.multilayer import *
+from .core.utilities import *
+from .core import *
 
-# check for Python verion
+
+
 import sys
 if sys.version_info[:2] < (3, 6):
     raise ImportError("Python version 3.6 or later is required for multiNetX\
                         (%d.%d detected)." % sys.version_info[:2])
 del sys
 
-__author__ = "Nikos E. Kouvaris <nkouba@gmail.com>"
-__copyright__ = "Copyright (C) 2013-2019 by \
-                Nikos E. Kouvaris <nkouba@gmail.com>\
-                Project LASAGNE \
-                -- multi-LAyer SpAtiotemporal Generalized NEtworks"
-__license__ = "GNU GPL"
-__version__ = "2.1"
 
 
