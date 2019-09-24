@@ -17,7 +17,7 @@ from setuptools import setup, find_packages
 
 
 NAME = "multinetx"
-VERSION = "3.0"
+VERSION = "2.3"
 
 
 with open("requirements.txt") as f:

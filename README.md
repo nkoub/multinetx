@@ -1,4 +1,4 @@
-![png](logo.png) multiNetX v3.0 
+![png](logo.png) multiNetX v2.3 
 =========
 
 multiNetX is a python package for the manipulation and visualization of 
@@ -467,7 +467,7 @@ additions made by *Ines Carrasco* (https://github.com/InesCarrasco)
 during her internship in the University of Namur 
 and the Namur Institute for Complex Systems (naXys) the summer of 2018.
 
-**multiNetX v3.0** provides is buid on the previous versions and 
+**multiNetX v2.3** provides is buid on the previous versions and 
 provides an easy installation m,ethod via pypip
 
 multiNetX is free software: you can redistribute it and/or modify
