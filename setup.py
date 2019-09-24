@@ -35,16 +35,11 @@ setup(
     author_email="nkouba@gmail.com",
     description="multiNetX",
     long_description=long_description,
-    # long_description_content_type='text/markdown',
     url="https://github.com/nkoub/multinetx",
     keywords=["multiplex", "multilayer", "multinetx", "networkx"],
-    # package_dir={NAME: NAME},
+    package_dir={NAME: NAME},
     packages=find_packages(),
     setup_requires=["pytest", "pytest-runner"],
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: GPL3",
-        "Operating System :: OS Independent",
-    ],
-    install_requires=requirements
+    install_requires=requirements,
+    include_package_data =  True,
 )

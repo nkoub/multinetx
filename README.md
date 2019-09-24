@@ -17,6 +17,14 @@ This allows for:
 
 # How to install multiNetX
 
+You have to execute the following command in your terminal:
+    
+```bash
+pip install git+https://github.com/nkoub/multinetx.git
+```
+
+**Or**
+   
 1. Clone the repository of multinetx into your system:
     ```bash
     git clone https://github.com/nkoub/multinetx.git
@@ -27,7 +35,7 @@ This allows for:
     ```
 3. and then simply write:
     ```bash
-    python setup.py install
+    pip install .
     ```
 
 
