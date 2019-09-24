@@ -15,8 +15,14 @@ Licence, GPL
 
 from setuptools import setup, find_packages
 
+
 NAME = "multinetx"
 VERSION = "3.0"
+
+
+with open("requirements.txt") as f:
+    requirements = [l.strip('\n') for l in f if l.strip('\n') and not l.startswith('#')]
+
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -29,7 +35,7 @@ setup(
     author_email="nkouba@gmail.com",
     description="multiNetX",
     long_description=long_description,
-    long_description_content_type='text/markdown',
+    # long_description_content_type='text/markdown',
     url="https://github.com/nkoub/multinetx",
     keywords=["multiplex", "multilayer", "multinetx", "networkx"],
     # package_dir={NAME: NAME},
@@ -40,5 +46,5 @@ setup(
         "License :: GPL3",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    install_requires=requirements
 )
