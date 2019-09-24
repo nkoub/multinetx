@@ -1,4 +1,4 @@
-![png](logo.png) multiNetX version 3.0 
+![png](logo.png) multiNetX v3.0 
 =========
 
 multiNetX is a python package for the manipulation and visualization of 
