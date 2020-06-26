@@ -68,7 +68,7 @@ def get_position(
                           proj_angle=4)
     """
     if base_pos is None:
-        base_pos = nx.layout.circylar_layout(G.get_layer(0))
+        base_pos = nx.layout.circular_layout(G.get_layer(0))
     else:
         base_pos = base_pos
     pos = base_pos
